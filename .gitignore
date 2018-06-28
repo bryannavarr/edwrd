@@ -45,8 +45,7 @@ jspm_packages
 **/libs
 
 # Environment
-.env
-.env.production
+
 
 # VSCode
 .vscode/*
@@ -54,7 +53,7 @@ jspm_packages
 # Misc
 typings/
 .DS_Store
-server.js
+
 
 # build folders
 **/build/**
