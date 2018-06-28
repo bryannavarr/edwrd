@@ -10,7 +10,7 @@ class LayoutRouter extends React.Component {
 
         <div id="main" role="main">
           <React.Fragment>
-            <Route path="/minipaint" component={()=> window.location.href = 'http://52.34.101.0/#'} />
+            <Route path="/minipaint" component={()=> window.location.href = 'http://edwrd.herokuapp.com/'} />
           </React.Fragment>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import * as validationHelper from "../helpers/validation.helper";
 import Register from "./Register";
-import Vendor from "./Vendor";
 import * as usersService from "../services/users.service";
 import { Redirect } from "react-router-dom";
 
@@ -17,26 +16,19 @@ class LoginForm extends React.Component {
       staySignedIn: true,
       loginSuccess: false,
       registerHidden: true,
-      loginHidden: false,
-      vendorHidden: true
+      loginHidden: false
     };
 
     this.onChange = validationHelper.onChange.bind(this);
     this.onSignIn = this.onSignIn.bind(this);
     this.staySignedIn = this.staySignedIn.bind(this);
     this.showPanels = this.showPanels.bind(this);
-    this.showVendorForm = this.showVendorForm.bind(this);
   }
 
   staySignedIn() {
     this.state.staySignedIn
       ? this.setState({ staySignedIn: false })
       : this.setState({ staySignedIn: true });
-  }
-
-  showVendorForm() {
-    this.setState({ vendorHidden: false });
-    this.setState({ loginHidden: !this.state.loginHidden });
   }
 
   showPanels(e) {
@@ -108,7 +100,7 @@ class LoginForm extends React.Component {
       });
   }
 
-// =======================LOGIN VERSION 2===========================
+  // =======================LOGIN VERSION 2===========================
   // render() {
   //   return (
   //     <React.Fragment>
@@ -132,7 +124,7 @@ class LoginForm extends React.Component {
   //     </React.Fragment>
   //   );
   // }
-  // =======================LOGIN VERSION 2===========================  
+  // =======================LOGIN VERSION 2===========================
 
   render() {
     return (
@@ -255,20 +247,6 @@ class LoginForm extends React.Component {
                               </a>
                             </small>
                           </div>
-                          <div>
-                            <small>
-                              <a
-                                href=""
-                                onClick={this.showVendorForm}
-                                className=""
-                                data-toggle="collapse"
-                                data-target="#cardRegister"
-                                data-parent="#parent"
-                              >
-                                <p className="text-center">Become a partner</p>
-                              </a>
-                            </small>
-                          </div>
                         </div>
                       </div>
                     </form>
@@ -276,8 +254,6 @@ class LoginForm extends React.Component {
                 </div>
               </div>
             )}
-
-            {!this.state.vendorHidden && <Vendor />}
             {!this.state.registerHidden && <Register />}
           </React.Fragment>
         )}

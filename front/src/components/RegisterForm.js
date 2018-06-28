@@ -3,6 +3,7 @@ import * as validationHelper from "../helpers/validation.helper";
 import * as usersService from "../services/users.service";
 import { Redirect } from "react-router-dom";
 import Login from "./Login";
+import Vendor from "./Vendor";
 
 class RegisterForm extends React.Component {
   constructor(props) {
@@ -14,13 +15,14 @@ class RegisterForm extends React.Component {
       formData: formData,
       formValid: false,
       loginHidden: true,
-      registerHidden: false
+      registerHidden: false,
+      vendorHidden: true
     };
     this.onChange = validationHelper.onChange.bind(this);
     this.registerUser = this.registerUser.bind(this);
     this.confirmPasswordsMatch = this.confirmPasswordsMatch.bind(this);
     this.showLogin = this.showLogin.bind(this);
-
+    this.showVendorForm = this.showVendorForm.bind(this);
   }
 
   showLogin() {
@@ -28,6 +30,11 @@ class RegisterForm extends React.Component {
       registerHidden: true
     });
     this.setState({ loginHidden: !this.state.loginHidden });
+  }
+
+  showVendorForm() {
+    this.setState({ vendorHidden: false });
+    this.setState({ registerHidden: !this.state.registerHidden });
   }
 
   initializeValidation() {
@@ -237,6 +244,20 @@ class RegisterForm extends React.Component {
                             <p className="text-center">Back to Login</p>
                           </a>
                         </small>
+                        <div>
+                          <small>
+                            <a
+                              href=""
+                              onClick={this.showVendorForm}
+                              className=""
+                              data-toggle="collapse"
+                              data-target="#cardRegister"
+                              data-parent="#parent"
+                            >
+                              <p className="text-center">Become a partner</p>
+                            </a>
+                          </small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -245,6 +266,7 @@ class RegisterForm extends React.Component {
             </div>
           </div>
         )}
+        {!this.state.vendorHidden && <Vendor />}
       </React.Fragment>
     );
   }
